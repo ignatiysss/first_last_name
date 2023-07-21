@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -12,12 +13,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button = findViewById<Button>(R.id.buttonApply)
-        val editText = findViewById<EditText>(R.id.editCountry)
-
+        val firstName = findViewById<EditText>(R.id.editFirstName)
+        val lastName = findViewById<EditText>(R.id.editLastName)
+        val birthDay = findViewById<EditText>(R.id.editBirthDay)
+        val country = findViewById<EditText>(R.id.editCountry)
         button.setOnClickListener {
-            val text = editText.text.toString()
-
-            Toast.makeText(this, "Ти реально думав що мені буде не лінь писати логіку???", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Значить так ти ${firstName.text.toString()} ${lastName.text.toString()}, народився ${birthDay.text.toString()}, в ${country.text.toString()}", Toast.LENGTH_SHORT).show()
+        }
+        val buttonPlusOne = findViewById<Button>(R.id.buttonPlusOne)
+        var counter = 0
+        buttonPlusOne.setOnClickListener {
+            counter++
+            findViewById<TextView>(R.id.tvCounter).text = "Counter: $counter"
         }
     }
 }

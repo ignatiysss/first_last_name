@@ -6,4 +6,5 @@
     <string name="birth_day">Birth day</string>
     <string name="country">Country</string>
     <string name="apply">apply</string>
+    <string name="zero">Counter: 0</string>
 </resources>
