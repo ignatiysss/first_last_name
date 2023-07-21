@@ -3,4 +3,7 @@
     <string name="smth">smth</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
+    <string name="birth_day">Birth day</string>
+    <string name="country">Country</string>
+    <string name="apply">apply</string>
 </resources>
