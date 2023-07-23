@@ -42,8 +42,13 @@ class MainActivity : AppCompatActivity() {
         }
         binding.smthId.setOnClickListener {
             Intent(this, SmthActivity::class.java).also {
+                it.putExtra("EXTRA_FIRST_NAME", firstName.text.toString())
+                it.putExtra("EXTRA_LAST_NAME", lastName.text.toString())
+                it.putExtra("EXTRA_BIRTH_DAY", birthDay.text.toString())
+                it.putExtra("EXTRA_COUNTRY", country.text.toString())
                 startActivity(it)
             }
         }
     }
 }
+
