@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         val birthDay = findViewById<EditText>(R.id.editBirthDay)
         val country = findViewById<EditText>(R.id.editCountry)
         binding.buttonApply.setOnClickListener {
-            Toast.makeText(this, "Значить так ти ${firstName.text.toString()} ${lastName.text.toString()}, народився ${birthDay.text.toString()}, в ${country.text.toString()}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Значить так ти ${firstName.text.toString()} ${lastName.text.toString()
+            }, народився ${birthDay.text.toString()}, в ${country.text.toString()}", Toast.LENGTH_SHORT).show()
         }
         var counter = 0
         binding.buttonPlusOne.setOnClickListener {
@@ -35,11 +37,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonAdd.setOnClickListener {
-            findViewById<TextView>(R.id.tvResult).text = (findViewById<EditText>(R.id.editFirstNumber).text.toString().toInt() +
-                    findViewById<EditText>(R.id.editSecondNumber).text.toString().toInt()).toString()
+            findViewById<TextView>(R.id.tvResult).text = (findViewById<EditText>(R.id.editFirstNumber).text.toString().toIntOrNull()
+                ?.plus(findViewById<EditText>(R.id.editSecondNumber).text.toString().toIntOrNull()!!)).toString()
         }
         binding.smthId.setOnClickListener {
-            Toast.makeText(this, "Значить так ти ${firstName.text.toString()} ${lastName.text.toString()}, народився ${birthDay.text.toString()}, в ${country.text.toString()}", Toast.LENGTH_SHORT).show()
+            Intent(this, SmthActivity::class.java).also {
+                startActivity(it)
+            }
         }
     }
 }
