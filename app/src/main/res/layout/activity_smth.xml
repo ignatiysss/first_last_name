@@ -5,26 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/smthAPhoto"
+        android:layout_width="270dp"
+        android:layout_height="480dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/buttonSmthAToast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/toast"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSmthAPermission"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSmthAPermission"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSmthAPermission"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/permission"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSmthAChangePhoto"
+        app:layout_constraintStart_toEndOf="@+id/buttonSmthAToast"
+        app:layout_constraintTop_toBottomOf="@+id/smthAPhoto" />
+
+    <Button
+        android:id="@+id/buttonSmthAChangePhoto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/photo"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSmthAPermission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSmthAPermission" />
+
+    <Button
+        android:id="@+id/buttonSmthANextA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/toast"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/next_activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/buttonSmthAPermission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/permission"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonSmthAToast"/>
+        app:layout_constraintTop_toBottomOf="@+id/buttonSmthAPermission" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
