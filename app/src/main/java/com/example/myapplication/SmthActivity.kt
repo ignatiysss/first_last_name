@@ -8,30 +8,39 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.myapplication.databinding.ActivitySmthBinding
 
 @Suppress("DEPRECATION")
-class SmthActivity: AppCompatActivity() {
+class SmthActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivitySmthBinding
 
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_smth)
+        binding = ActivitySmthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbarSmth)
+
+
         findViewById<Button>(R.id.buttonSmthAToast).setOnClickListener {
-            Toast.makeText(this, "${
-                intent.getStringExtra("EXTRA_FIRST_NAME")} ${intent.getStringExtra(
-                "EXTRA_LAST_NAME")
-            } was born ${
-                intent.getStringExtra("EXTRA_BIRTH_DAY") 
-            } in ${intent.getStringExtra("EXTRA_COUNTRY")}", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this, "${
+                    intent.getStringExtra("EXTRA_FIRST_NAME")
+                } ${
+                    intent.getStringExtra("EXTRA_LAST_NAME")
+                } was born ${
+                    intent.getStringExtra("EXTRA_BIRTH_DAY")
+                } in ${intent.getStringExtra("EXTRA_COUNTRY")}", Toast.LENGTH_LONG
+            ).show()
 
         }
         findViewById<Button>(R.id.buttonSmthAPermission).setOnClickListener {
@@ -61,18 +70,26 @@ class SmthActivity: AppCompatActivity() {
         }
     }
 
-    private fun hasWriteExternalStoragePermission() = ActivityCompat.checkSelfPermission(this,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+    private fun hasWriteExternalStoragePermission() = ActivityCompat.checkSelfPermission(
+        this,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    ) == PackageManager.PERMISSION_GRANTED
 
-    private fun hasLocationForegroundPermission() = ActivityCompat.checkSelfPermission(this,
-        Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    private fun hasLocationForegroundPermission() = ActivityCompat.checkSelfPermission(
+        this,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun hasLocationBackgroundPermission() = ActivityCompat.checkSelfPermission(this,
-    Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED
+    private fun hasLocationBackgroundPermission() = ActivityCompat.checkSelfPermission(
+        this,
+        Manifest.permission.ACCESS_BACKGROUND_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED
 
-    private fun hasCameraPermission() = ActivityCompat.checkSelfPermission(this,
-    Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+    private fun hasCameraPermission() = ActivityCompat.checkSelfPermission(
+        this,
+        Manifest.permission.CAMERA
+    ) == PackageManager.PERMISSION_GRANTED
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun requestPermission() {
@@ -87,22 +104,32 @@ class SmthActivity: AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.app_bar_menu, menu)
+        menuInflater.inflate(R.menu.app_bar_menu, menu)
         return true
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.menuAddContact -> Toast.makeText(this, "You add someone to contact", Toast.LENGTH_SHORT).show()
-//            R.id.menuFavorites -> Toast.makeText(this, "You click on favorites", Toast.LENGTH_SHORT).show()
-//            R.id.menuFeedback -> Toast.makeText(this, "You click on feedback", Toast.LENGTH_SHORT).show()
-//            R.id.menuSettings -> Toast.makeText(this, "You click on settings", Toast.LENGTH_SHORT).show()
-//            R.id.menuCloseApp -> finish()
-//        }
-//
-//        return true
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menuAddContact -> Toast.makeText(
+                this,
+                "You add someone to contact",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            R.id.menuFavorites -> Toast.makeText(this, "You click on favorites", Toast.LENGTH_SHORT)
+                .show()
+
+            R.id.menuFeedback -> Toast.makeText(this, "You click on feedback", Toast.LENGTH_SHORT)
+                .show()
+
+            R.id.menuSettings -> Toast.makeText(this, "You click on settings", Toast.LENGTH_SHORT)
+                .show()
+
+            R.id.menuCloseApp -> finish()
+        }
+
+        return true
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -113,7 +140,7 @@ class SmthActivity: AppCompatActivity() {
         if (requestCode == 0 && grantResults.isNotEmpty()) {
             for (i in grantResults.indices) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("smthLog",  "${permissions[i]} granted.")
+                    Log.d("smthLog", "${permissions[i]} granted.")
                 }
             }
         }

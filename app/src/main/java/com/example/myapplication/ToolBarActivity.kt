@@ -22,7 +22,7 @@ class ToolBarActivity : AppCompatActivity() {
         binding = ActivityToolBarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbarSmth)
 
         val navController = findNavController(R.id.nav_host_fragment_content_tool_bar)
         appBarConfiguration = AppBarConfiguration(navController.graph)
