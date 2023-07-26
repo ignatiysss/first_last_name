@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -48,10 +49,19 @@ class SmthActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonSmthAChangePhoto).setOnClickListener {
-            Intent(Intent.ACTION_GET_CONTENT).also {
-                it.type = "image/*"
-                startActivityForResult(it, 0)
-            }
+            AlertDialog.Builder(this)
+                .setTitle("Change photo")
+                .setMessage("Are you sure?")
+                .setIcon(R.drawable.baseline_add_photo_alternate_24)
+                .setPositiveButton("Yes") {_, _ ->
+                    Intent(Intent.ACTION_GET_CONTENT).also {
+                        it.type = "image/*"
+                        startActivityForResult(it, 0)
+                    }
+                }
+                .setNegativeButton("No") {_, _ ->
+                    Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
+                }.show()
         }
 
         findViewById<Button>(R.id.buttonSmthANextA).setOnClickListener {
