@@ -48,8 +48,11 @@ class SmthActivity : AppCompatActivity() {
             requestPermission()
         }
 
-        findViewById<Button>(R.id.buttonSmthAChangePhoto).setOnClickListener {
-            AlertDialog.Builder(this)
+        val optionsForSingleChoiceDialog = arrayOf("Leave default",
+            "Choose between most useful",
+        "Choose by your self")
+
+            val chooseByYourSelf = AlertDialog.Builder(this)
                 .setTitle("Change photo")
                 .setMessage("Are you sure?")
                 .setIcon(R.drawable.baseline_add_photo_alternate_24)
@@ -61,7 +64,21 @@ class SmthActivity : AppCompatActivity() {
                 }
                 .setNegativeButton("No") {_, _ ->
                     Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
-                }.show()
+                }.create()
+
+        val intentForSingleChoiceSmthAPhoto = Intent(Intent.ACTION_SEND)
+        intentForSingleChoiceSmthAPhoto.type = "image/*"
+
+        val singleChoiceForSmthAPhoto = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Choose blya yak ya zaibavsia")
+            .setSingleChoiceItems(optionsForSingleChoiceDialog, 0) {dialogInteface, i ->
+                when (i) {
+                    0 -> Intent(Intent.ACTION_SEND).putExtra(Intent.EXTRA_STREAM, "app/src/main/res/drawable/STFlowers.png")
+                }
+            }
+
+        findViewById<Button>(R.id.buttonSmthAChangePhoto).setOnClickListener {
+
         }
 
         findViewById<Button>(R.id.buttonSmthANextA).setOnClickListener {
