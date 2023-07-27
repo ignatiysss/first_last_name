@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -66,19 +67,48 @@ class SmthActivity : AppCompatActivity() {
                     Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
                 }.create()
 
-        val intentForSingleChoiceSmthAPhoto = Intent(Intent.ACTION_SEND)
-        intentForSingleChoiceSmthAPhoto.type = "image/*"
+        val uri = Uri.parse("app/src/main/res/drawable/st_flowers.png")
+//        val intent = Intent(Intent.ACTION_GET_CONTENT)
+//        intent.type = "image/*"
+//        intent.data = uri
+
+
+        val leaveDefault = AlertDialog.Builder(this)
+            .setTitle("Leave default")
+            .setMessage("Are you sure that you need leave default photo")
+            .setPositiveButton("Yes") { _, _ ->
+                Intent( Intent().also {
+                    it.type = "image/*"
+                    startActivityForResult(it, 0)
+
+                }
+            }
+            .setNegativeButton("No") { _, _ ->
+                Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
+            }
+            .create()
+
+
+
+
+        var integerForZalupnaFunctionForSingleIduNahyi: Int = 0
 
         val singleChoiceForSmthAPhoto = androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle("Choose blya yak ya zaibavsia")
             .setSingleChoiceItems(optionsForSingleChoiceDialog, 0) {dialogInteface, i ->
-                when (i) {
-                    0 -> Intent(Intent.ACTION_SEND).putExtra(Intent.EXTRA_STREAM, "app/src/main/res/drawable/STFlowers.png")
+                integerForZalupnaFunctionForSingleIduNahyi = i
+            }
+            .setPositiveButton("Yes") {dialogInterface, i ->
+                when (integerForZalupnaFunctionForSingleIduNahyi) {
+                    0 -> leaveDefault.show()
+                    2 -> chooseByYourSelf.show()
                 }
             }
+            .create()
+
 
         findViewById<Button>(R.id.buttonSmthAChangePhoto).setOnClickListener {
-
+            singleChoiceForSmthAPhoto.show()
         }
 
         findViewById<Button>(R.id.buttonSmthANextA).setOnClickListener {
