@@ -67,21 +67,15 @@ class SmthActivity : AppCompatActivity() {
                     Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
                 }.create()
 
-        val uri = Uri.parse("app/src/main/res/drawable/st_flowers.png")
-//        val intent = Intent(Intent.ACTION_GET_CONTENT)
-//        intent.type = "image/*"
-//        intent.data = uri
+        val uri = Uri.parse(R.drawable.st_flowers.toString())
 
 
         val leaveDefault = AlertDialog.Builder(this)
             .setTitle("Leave default")
             .setMessage("Are you sure that you need leave default photo")
             .setPositiveButton("Yes") { _, _ ->
-                Intent( Intent().also {
-                    it.type = "image/*"
-                    startActivityForResult(it, 0)
+                binding.smthAPhoto.setImageDrawable(getResources().getDrawable(R.drawable.st_flowers));
 
-                }
             }
             .setNegativeButton("No") { _, _ ->
                 Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
