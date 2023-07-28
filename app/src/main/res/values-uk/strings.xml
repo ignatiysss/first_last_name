@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Програма для вивчення Андроїду</string>
+    <string name="smth">Щось</string>
+    <string name="first_name">Ім\'я</string>
+    <string name="last_name">Прізвище</string>
+    <string name="birth_day">Дата народження</string>
+    <string name="country">Країна</string>
+    <string name="apply">підтвердити</string>
+    <string name="zero">Рахувальник: 0</string>
+    <string name="second_number">Другий номер</string>
+    <string name="first_number">Перший номер</string>
+    <string name="result">Результат</string>
+    <string name="add">Додати</string>
+    <string name="permission">Дозволи</string>
+    <string name="photo">Фото</string>
+    <string name="next_activity">Наступна активність</string>
+    <string name="first_fragment_label">Перший фрагмент</string>
+    <string name="second_fragment_label">Другий фрагмент</string>
+    <string name="next">Далі</string>
+    <string name="previous">Попередній</string>
+    <string name="settings">Налаштування</string>
+    <string name="favorites">Улюблені</string>
+    <string name="add_contact">Додати контакти</string>
+    <string name="close_app">Закрити програму</string>
+    <string name="give_feedback">Залишити відгук</string>
 </resources>
