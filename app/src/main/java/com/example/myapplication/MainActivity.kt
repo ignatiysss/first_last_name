@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         binding.buttonApply.setOnClickListener {
             Toast.makeText(
                 this,
-                "Значить так ти ${firstName.text.toString()} ${
-                    lastName.text.toString()
-                }, народився ${birthDay.text.toString()}, в ${country.text.toString()}",
+                "${firstName.text} ${
+                    lastName.text
+                }, was born ${birthDay.text}, in ${country.text}",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -46,13 +46,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonAdd.setOnClickListener {
-            findViewById<TextView>(R.id.tvResult).text =
-                (findViewById<EditText>(R.id.editFirstNumber).text.toString().toIntOrNull()
-                    ?.plus(
-                        findViewById<EditText>(R.id.editSecondNumber).text.toString()
-                            .toIntOrNull()!!
-                    )).toString()
+
+            val firstNumber = binding.editFirstNumber.text.toString().toIntOrNull()
+            val secondNumber = binding.editSecondNumber.text.toString().toIntOrNull()
+            val result: Int = if (firstNumber == null && secondNumber != null) {
+                secondNumber.toInt()
+            } else if (secondNumber == null && firstNumber != null) {
+                firstNumber
+            } else if (firstNumber != null && secondNumber != null) {
+                firstNumber + secondNumber
+            } else 0
+
+            binding.tvResult.text = result.toString()
         }
+
         binding.smthId.setOnClickListener {
             Intent(this, SmthActivity::class.java).also {
                 it.putExtra("EXTRA_FIRST_NAME", firstName.text.toString())

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">App for learn andtoid</string>
     <string name="smth">smth</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
@@ -63,4 +63,5 @@
     <string name="add_contact">Add contact</string>
     <string name="close_app">Close app</string>
     <string name="give_feedback">Give feedback</string>
+    <string name="_1">+1</string>
 </resources>

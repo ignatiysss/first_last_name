@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -42,7 +43,8 @@
         android:text="@string/toast"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSmthAPermission"
         app:layout_constraintEnd_toStartOf="@+id/buttonSmthAPermission"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/buttonSmthAPermission"
@@ -56,7 +58,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSmthAChangePhoto"
         app:layout_constraintStart_toEndOf="@+id/buttonSmthAToast"
-        app:layout_constraintTop_toBottomOf="@+id/smthAPhoto" />
+        app:layout_constraintTop_toBottomOf="@+id/smthAPhoto"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/buttonSmthAChangePhoto"
@@ -67,7 +70,8 @@
         android:text="@string/photo"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSmthAPermission"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonSmthAPermission" />
+        app:layout_constraintStart_toEndOf="@+id/buttonSmthAPermission"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/buttonSmthANextA"

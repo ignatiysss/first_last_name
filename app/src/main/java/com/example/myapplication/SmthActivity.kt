@@ -5,7 +5,6 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +16,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.res.ResourcesCompat
 import com.example.myapplication.databinding.ActivitySmthBinding
 
 @Suppress("DEPRECATION")
@@ -33,7 +33,7 @@ class SmthActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarSmth)
 
 
-        findViewById<Button>(R.id.buttonSmthAToast).setOnClickListener {
+        binding.buttonSmthAToast.setOnClickListener {
             Toast.makeText(
                 this, "${
                     intent.getStringExtra("EXTRA_FIRST_NAME")
@@ -49,63 +49,67 @@ class SmthActivity : AppCompatActivity() {
             requestPermission()
         }
 
-        val optionsForSingleChoiceDialog = arrayOf("Leave default",
+        val optionsForSingleChoiceDialog = arrayOf(
+            "Leave default",
             "Choose between most useful",
-        "Choose by your self")
-
-            val chooseByYourSelf = AlertDialog.Builder(this)
-                .setTitle("Change photo")
-                .setMessage("Are you sure?")
-                .setIcon(R.drawable.baseline_add_photo_alternate_24)
-                .setPositiveButton("Yes") {_, _ ->
-                    Intent(Intent.ACTION_GET_CONTENT).also {
-                        it.type = "image/*"
-                        startActivityForResult(it, 0)
-                    }
-                }
-                .setNegativeButton("No") {_, _ ->
-                    Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
-                }.create()
-
-        val uri = Uri.parse(R.drawable.st_flowers.toString())
-
+            "Choose by your self"
+        )
 
         val leaveDefault = AlertDialog.Builder(this)
             .setTitle("Leave default")
             .setMessage("Are you sure that you need leave default photo")
             .setPositiveButton("Yes") { _, _ ->
-                binding.smthAPhoto.setImageDrawable(getResources().getDrawable(R.drawable.st_flowers));
+                binding.smthAPhoto.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        resources,
+                        R.drawable.st_flowers,
+                        theme
+                    )
+                )
 
             }
             .setNegativeButton("No") { _, _ ->
                 Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
+            }.create()
+
+
+        val chooseByYourSelf = AlertDialog.Builder(this)
+            .setTitle("Change photo")
+            .setMessage("Are you sure?")
+            .setIcon(R.drawable.baseline_add_photo_alternate_24)
+            .setPositiveButton("Yes") { _, _ ->
+                Intent(Intent.ACTION_GET_CONTENT).also {
+                    it.type = "image/*"
+                    startActivityForResult(it, 0)
+                }
             }
-            .create()
+            .setNegativeButton("No") { _, _ ->
+                Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
+            }.create()
 
+        val chooseFromMostUseful = Toast.makeText(this, "I am too lazy for this", Toast.LENGTH_LONG)
 
-
-
-        var integerForZalupnaFunctionForSingleIduNahyi: Int = 0
-
+        var stateSingleChooseForeSmthAPhoto = 0
         val singleChoiceForSmthAPhoto = androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Choose blya yak ya zaibavsia")
-            .setSingleChoiceItems(optionsForSingleChoiceDialog, 0) {dialogInteface, i ->
-                integerForZalupnaFunctionForSingleIduNahyi = i
+            .setTitle("Choose action")
+            .setSingleChoiceItems(optionsForSingleChoiceDialog, 0) { _, i ->
+                stateSingleChooseForeSmthAPhoto = i
             }
-            .setPositiveButton("Yes") {dialogInterface, i ->
-                when (integerForZalupnaFunctionForSingleIduNahyi) {
+            .setPositiveButton("Yes") { _, _ ->
+                when (stateSingleChooseForeSmthAPhoto) {
                     0 -> leaveDefault.show()
+                    1 -> chooseFromMostUseful.show()
                     2 -> chooseByYourSelf.show()
                 }
             }
             .create()
 
 
-        findViewById<Button>(R.id.buttonSmthAChangePhoto).setOnClickListener {
+        binding.buttonSmthAChangePhoto.setOnClickListener {
             singleChoiceForSmthAPhoto.show()
         }
 
-        findViewById<Button>(R.id.buttonSmthANextA).setOnClickListener {
+        binding.buttonSmthANextA.setOnClickListener {
             Intent(this, ToolBarActivity::class.java).also {
                 startActivity(it)
             }
