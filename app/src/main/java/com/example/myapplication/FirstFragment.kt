@@ -33,23 +33,34 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val todoList = listOf(Todo("Task 1", false), Todo("Task 2", true), Todo("Task 3", false))
+
+        val adapter = TodoAdapter(todoList)
+
+        binding.recycleViewTodos.adapter = adapter
+        binding.recycleViewTodos.layoutManager = LinearLayoutManager(
+            parentFragment?.context?: context
+        )
+
         binding.buttonFragmentFirstAdd.setOnClickListener {
-            var todoList = mutableListOf(
-                Todo("smth", true)
-            )
+            val todoList = mutableListOf<Todo>()
+            todoList.add(Todo("Task 1", false))
+            todoList.add(Todo("Task 2", true))
+            todoList.add(Todo("Task 3", false))
+
             val adapter = TodoAdapter(todoList)
 
             binding.recycleViewTodos.adapter = adapter
             binding.recycleViewTodos.layoutManager = LinearLayoutManager(
-                parentFragment?.context ?: context
+                parentFragment?.context?: context
             )
-
 
             val title = _binding!!.editNewTodos.text.toString()
             val todo = Todo(title, false)
             todoList.add(todo)
             adapter.notifyItemInserted(todoList.size - 1)
         }
+
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

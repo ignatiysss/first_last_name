@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:hint="@string/new_todo"
+            android:minHeight="48dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/buttonFragmentFirstAdd"
             app:layout_constraintEnd_toStartOf="@+id/buttonFragmentFirstAdd"
             app:layout_constraintStart_toStartOf="parent" />
