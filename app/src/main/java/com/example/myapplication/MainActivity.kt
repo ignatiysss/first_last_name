@@ -69,6 +69,16 @@ class MainActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+
+        binding.RecycleId.setOnClickListener {
+            Intent(this, RecycleActivity::class.java).also {
+                it.putExtra("EXTRA_FIRST_NAME", firstName.text.toString())
+                it.putExtra("EXTRA_LAST_NAME", lastName.text.toString())
+                it.putExtra("EXTRA_BIRTH_DAY", birthDay.text.toString())
+                it.putExtra("EXTRA_COUNTRY", country.text.toString())
+                startActivity(it)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
