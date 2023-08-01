@@ -15,45 +15,21 @@
             android:id="@+id/button_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="@string/next"
-            app:layout_constraintBottom_toTopOf="@+id/recycleViewTodos"
+            app:layout_constraintBottom_toTopOf="@id/textview_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViewTodos"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_first"
-            tools:itemCount="26" />
-
-        <EditText
-            android:id="@+id/editNewTodos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:hint="@string/new_todo"
-            app:layout_constraintBaseline_toBaselineOf="@+id/buttonFragmentFirstAdd"
-            app:layout_constraintEnd_toStartOf="@+id/buttonFragmentFirstAdd"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/buttonFragmentFirstAdd"
+        <TextView
+            android:id="@+id/textview_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="@string/add"
+            android:text="@string/lorem_ipsum"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editNewTodos"
-            app:layout_constraintTop_toBottomOf="@+id/recycleViewTodos" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_first" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
