@@ -186,7 +186,7 @@ class SmthActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menuAddContact -> Toast.makeText(
                 this,
-                "You add someone to contact",
+                "You add someone to contact ешкере",
                 Toast.LENGTH_SHORT
             ).show()
 
