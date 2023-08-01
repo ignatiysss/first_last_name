@@ -24,7 +24,8 @@ class TodoAdapter(
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.itemView.apply {
-            findViewById<EditText>(R.id.textViewTodo).text = Editable.Factory.getInstance().newEditable(todos[position].title)
+            findViewById<EditText>(R.id.textViewTodo).text =
+                Editable.Factory.getInstance().newEditable(todos[position].title)
             findViewById<CheckBox>(R.id.checkboxDone).isChecked = todos[position].isChecked
         }
     }
