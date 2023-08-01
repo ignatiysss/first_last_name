@@ -10,9 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -34,22 +32,6 @@ class SmthActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarSmth)
 
-        val listForSpinnerToast = listOf("January", "February", "March", "April",
-            "May", "June", "July", "August", "September", "October", "November", "December")
-
-        val adapterForSpinnerToast = ArrayAdapter<String>(this, androidx.constraintlayout
-            .widget.R.layout.support_simple_spinner_dropdown_item, listForSpinnerToast)
-        binding.spinnerToast.adapter = adapterForSpinnerToast
-
-        binding.spinnerToast.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, i: Int, id: Long) {
-                Toast.makeText(this@SmthActivity, "You selected ${adapterView
-                    ?.getItemAtPosition(i).toString()}", Toast.LENGTH_SHORT).show()
-            }
-        }
 
         binding.buttonSmthAToast.setOnClickListener {
             Toast.makeText(
@@ -63,8 +45,7 @@ class SmthActivity : AppCompatActivity() {
             ).show()
 
         }
-
-        binding.buttonSmthAPermission.setOnClickListener {
+        findViewById<Button>(R.id.buttonSmthAPermission).setOnClickListener {
             requestPermission()
         }
 
@@ -75,7 +56,7 @@ class SmthActivity : AppCompatActivity() {
         )
 
         val leaveDefault = AlertDialog.Builder(this)
-            .setTitle(optionsForSingleChoiceDialog[0])
+            .setTitle("Leave default")
             .setMessage("Are you sure that you need leave default photo")
             .setPositiveButton("Yes") { _, _ ->
                 binding.smthAPhoto.setImageDrawable(
@@ -91,10 +72,9 @@ class SmthActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
             }.create()
 
-        val chooseFromMostUseful = Toast.makeText(this, "I am too lazy for this", Toast.LENGTH_LONG)
 
         val chooseByYourSelf = AlertDialog.Builder(this)
-            .setTitle(optionsForSingleChoiceDialog[2])
+            .setTitle("Change photo")
             .setMessage("Are you sure?")
             .setIcon(R.drawable.baseline_add_photo_alternate_24)
             .setPositiveButton("Yes") { _, _ ->
@@ -107,6 +87,7 @@ class SmthActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ok :)", Toast.LENGTH_LONG).show()
             }.create()
 
+        val chooseFromMostUseful = Toast.makeText(this, "I am too lazy for this", Toast.LENGTH_LONG)
 
         var stateSingleChooseForeSmthAPhoto = 0
         val singleChoiceForSmthAPhoto = androidx.appcompat.app.AlertDialog.Builder(this)
@@ -186,7 +167,7 @@ class SmthActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menuAddContact -> Toast.makeText(
                 this,
-                "You add someone to contact ешкере",
+                "You add someone to contact",
                 Toast.LENGTH_SHORT
             ).show()
 
@@ -220,3 +201,6 @@ class SmthActivity : AppCompatActivity() {
         }
     }
 }
+
+
+

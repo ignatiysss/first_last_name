@@ -64,5 +64,4 @@
     <string name="close_app">Close app</string>
     <string name="give_feedback">Give feedback</string>
     <string name="_1" translatable="false">+1</string>
-    <string name="new_todo">New todo</string>
 </resources>
