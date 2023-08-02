@@ -114,6 +114,8 @@ class SmthActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+
+
     }
 
     @Deprecated("Deprecated in Java")
