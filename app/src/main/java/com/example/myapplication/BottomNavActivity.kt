@@ -1,11 +1,9 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.ActivityBottomNavBinding
-import com.example.myapplication.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @Suppress("DEPRECATION")
 class BottomNavActivity : AppCompatActivity() {
@@ -23,7 +21,7 @@ class BottomNavActivity : AppCompatActivity() {
 
         setCurrentFragment(firstFragment)
 
-        binding.bottomNavigationView2.setOnNavigationItemSelectedListener {
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.homeBottomNav -> setCurrentFragment(firstFragment)
                 R.id.messageBottomNav -> setCurrentFragment(secondFragment)
@@ -37,7 +35,7 @@ class BottomNavActivity : AppCompatActivity() {
 
 
 
-    private fun setCurrentFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
+    fun setCurrentFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
         replace(R.id.frameLayoutFragmentBottomNovA, fragment)
         commit()
     }

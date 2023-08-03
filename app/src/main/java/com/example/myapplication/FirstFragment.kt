@@ -22,9 +22,12 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        binding.buttonFirst.setOnClickListener {
+            BottomNavActivity().setCurrentFragment(SecondFragmentTBA())
+        }
         return binding.root
 
     }
