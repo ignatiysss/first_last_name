@@ -90,8 +90,9 @@ class MainActivity : AppCompatActivity() {
             R.id.menuFeedback -> Toast.makeText(this, "You click on feedback", Toast.LENGTH_SHORT)
                 .show()
 
-            R.id.menuSettings -> Toast.makeText(this, "You click on settings", Toast.LENGTH_SHORT)
-                .show()
+            R.id.menuSettings -> Intent(this, SettingsActivity::class.java).also {
+                startActivity(it)
+            }
 
             R.id.menuCloseApp -> finish()
         }
