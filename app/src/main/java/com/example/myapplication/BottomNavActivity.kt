@@ -1,8 +1,11 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.example.myapplication.databinding.ActivityBottomNavBinding
 
 @Suppress("DEPRECATION")
@@ -15,17 +18,26 @@ class BottomNavActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_nav)
 
-        val firstFragment = FirstFragmentTBA()
-        val secondFragment = SecondFragmentTBA()
-        val thirdFragment = ThirdFragmentTBA()
+        val firstFragment = FirstFragmentBNA()
+        val secondFragment = SecondFragmentBNA()
+        val thirdFragment = ThirdFragmentBNA()
 
         setCurrentFragment(firstFragment)
+
+        binding.buttonBNA.setOnClickListener {
+            Toast.makeText(this, "xyi", Toast.LENGTH_LONG)
+
+        }
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.homeBottomNav -> setCurrentFragment(firstFragment)
-                R.id.messageBottomNav -> setCurrentFragment(secondFragment)
-                R.id.profileBottomNav -> setCurrentFragment(thirdFragment)
+                R.id.messageBottomNav -> supportFragmentManager.commit {
+                    replace<SecondFragmentBNA>(R.id.frameLayoutFragmentBottomNovA)
+                    setReorderingAllowed(true)
+                }
+                R.id.profileBottomNav -> Toast.makeText(this, "setOnNavigationItemSelected" +
+                        "Listener is working correct", Toast.LENGTH_LONG)
             }
             true
         }
@@ -35,7 +47,7 @@ class BottomNavActivity : AppCompatActivity() {
 
 
 
-    fun setCurrentFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
+    private fun setCurrentFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
         replace(R.id.frameLayoutFragmentBottomNovA, fragment)
         commit()
     }

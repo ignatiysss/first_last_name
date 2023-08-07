@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         binding.buttonFirst.setOnClickListener {
-            BottomNavActivity().setCurrentFragment(SecondFragmentTBA())
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         return binding.root
 
