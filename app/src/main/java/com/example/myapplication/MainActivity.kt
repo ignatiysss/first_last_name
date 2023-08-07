@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            val view = binding.root
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
         setSupportActionBar(binding.toolbarMain)
 
@@ -69,17 +69,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
-
-        binding.buttonBottomNavMainA.setOnClickListener {
-            Intent(this, BottomNavActivity::class.java).also {
-                it.putExtra("EXTRA_FIRST_NAME", firstName.text.toString())
-                it.putExtra("EXTRA_LAST_NAME", lastName.text.toString())
-                it.putExtra("EXTRA_BIRTH_DAY", birthDay.text.toString())
-                it.putExtra("EXTRA_COUNTRY", country.text.toString())
-                startActivity(it)
-            }
-        }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

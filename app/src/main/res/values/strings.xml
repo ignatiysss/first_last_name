@@ -67,8 +67,4 @@
     <string name="home">Home</string>
     <string name="message">Message</string>
     <string name="profile">Profile</string>
-    <string name="bottom_nav">Bottom nav</string>
-    <string name="first_fragment">First fragment</string>
-    <string name="second_fragment">Second Fragment</string>
-    <string name="third_fragment">Third fragment</string>
 </resources>
