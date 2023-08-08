@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menuAddContact -> Toast.makeText(
                 this,
-                "You add someone to contact",
+                "You add someone to contacts",
                 Toast.LENGTH_SHORT
             ).show()
 
